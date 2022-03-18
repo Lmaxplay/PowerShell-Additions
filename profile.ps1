@@ -27,8 +27,6 @@ if( $IsWindows ) {
     }
 }
 
-Write-Host -NoNewline ""
-
 Write-Host -NoNewline "`n`n"
 
 $__prfen__ = $true
@@ -36,10 +34,11 @@ $__prfen__ = $true
 Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
-    if($global:__prfen__ -eq $false) {
+    if($__prfen__ -eq $false) {
         $scriptBlock = [Scriptblock]::Create($__op__)
         return Invoke-Command -ScriptBlock $scriptBlock
     }
+    try {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
@@ -58,7 +57,10 @@ function prompt {
         Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta
     }
     Write-Host -NoNewline -ForegroundColor:White ">"
-    return " ";
+    return "> ";
+    } catch {
+        return "ERROR:"
+    }
 }
 
 function Disable-Profile {
@@ -78,5 +80,3 @@ function Enable-Profile {
     $global:__prfen__ = $true;
     if($global:__prfen__) {return;}; #Fix VSCode being annoying
 }
-
-Disable-Profile
