@@ -1,4 +1,4 @@
-$PowerShellAdditionsVersion = "v1.0.0"
+$PowerShellAdditionsVersion = "v1.0.1"
 
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
@@ -35,31 +35,31 @@ Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope gl
 
 function prompt {
     if($__prfen__ -eq $false) {
-        $scriptBlock = [Scriptblock]::Create($__op__)
-        return Invoke-Command -ScriptBlock $scriptBlock
+        $scriptBlock = [Scriptblock]::Create($__op__);
+        return Invoke-Command -ScriptBlock $scriptBlock;
     }
     try {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami
+        $CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
 
-    Write-Host -NoNewline "PS " -ForegroundColor "Green"
-    Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green
-    Write-Host -NoNewline " "
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor Blue
+    Write-Host -NoNewline "PS " -ForegroundColor "Green";
+    Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green;
+    Write-Host -NoNewline " ";
+    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor Blue;
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
-        Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta
+        Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta;
     } else {
-        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta;
     }
-    Write-Host -NoNewline -ForegroundColor:White ">"
+    Write-Host -NoNewline -ForegroundColor:White ">";
     return " ";
     } catch {
-        return "ERROR:"
+        return "ERROR:";
     }
 }
 
@@ -69,7 +69,7 @@ function Disable-Profile {
     Disables the PowerShell Additions profile
     #>
     $global:__prfen__ = $false;
-    if($global:__prfen__) {return}; #Fix VSCode being annoying
+    if($global:__prfen__) {return;}; #Fix VSCode being annoying
 }
 
 function Enable-Profile {
