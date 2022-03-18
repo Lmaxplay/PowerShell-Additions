@@ -57,7 +57,7 @@ function prompt {
         Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta
     }
     Write-Host -NoNewline -ForegroundColor:White ">"
-    return "> ";
+    return " ";
     } catch {
         return "ERROR:"
     }
