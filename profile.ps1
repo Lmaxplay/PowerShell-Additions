@@ -62,11 +62,21 @@ function prompt {
 }
 
 function Disable-Profile {
+    <#
+    .DESCRIPTION
+    Disables the PowerShell Additions profile
+    #>
     $global:__prfen__ = $false;
     if($global:__prfen__) {return}; #Fix VSCode being annoying
 }
 
 function Enable-Profile {
+    <#
+    .DESCRIPTION
+    Enables the PowerShell Additions profile
+    #>
     $global:__prfen__ = $true;
     if($global:__prfen__) {return;}; #Fix VSCode being annoying
 }
+
+Disable-Profile
