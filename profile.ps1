@@ -36,7 +36,7 @@ $__prfen__ = $true
 Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global -Description "All processes"
 
 function prompt {
-    if($__prfen__ -eq $false) {
+    if($global:__prfen__ -eq $false) {
         $scriptBlock = [Scriptblock]::Create($__op__)
         return Invoke-Command -ScriptBlock $scriptBlock
     }
@@ -52,15 +52,21 @@ function prompt {
     Write-Host -NoNewline " "
     Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor Blue
     
-    Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta
+    if("$CmdPromptCurrentFolder".Contains(" ")) {
+        Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta
+    } else {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta
+    }
     Write-Host -NoNewline -ForegroundColor:White ">"
     return " ";
 }
 
 function Disable-Profile {
     $global:__prfen__ = $false;
+    if($global:__prfen__) {return}; #Fix VSCode being annoying
 }
 
 function Enable-Profile {
     $global:__prfen__ = $true;
+    if($global:__prfen__) {return;}; #Fix VSCode being annoying
 }
