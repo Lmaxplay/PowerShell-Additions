@@ -1,10 +1,10 @@
-$PWSHAD_VERSION = "v1.0.0"
+$PowerShellAdditionsVersion = "v1.0.0"
 
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
-if($PWSHAD_VERSION -ne "") {
+if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
 }
-Write-Host -NoNewline "$PWSHAD_VERSION" -ForegroundColor:Blue
+Write-Host -NoNewline "$PowerShellAdditionsVersion" -ForegroundColor:Blue
 Write-Host -NoNewline " for PowerShell 7.2.2`n" -ForegroundColor:DarkGray
 
 Write-Host -NoNewline "Made by "
