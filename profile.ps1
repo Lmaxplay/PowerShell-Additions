@@ -10,9 +10,9 @@ Write-Host -NoNewline " for PowerShell 7.2.2`n" -ForegroundColor:DarkGray
 Write-Host -NoNewline "Made by "
 Write-Host -NoNewline "Lmaxplay`n" -ForegroundColor:Green
 
-Write-Host -NoNewline "Script is located at "
-Write-Host -NoNewline $MyInvocation.MyCommand.Path -ForegroundColor:Blue
-Write-Host -NoNewline "`n"
+#Write-Host -NoNewline "Script is located at "
+#Write-Host -NoNewline $MyInvocation.MyCommand.Path -ForegroundColor:Blue
+#Write-Host -NoNewline "`n"
 
 if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
     Write-Host -NoNewline "WARNING: POWERSHELL VERSION ISN'T OFFICIALLY SUPPORTED`nUNEXPECTED BEHAVIOR MAY OCCUR" -ForegroundColor:Red
@@ -33,7 +33,7 @@ Write-Host -NoNewline "`n`n"
 
 $__prfen__ = $true
 
-Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global -Description "All processes"
+Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
     if($global:__prfen__ -eq $false) {
