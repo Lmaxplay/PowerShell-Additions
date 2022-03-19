@@ -1,6 +1,6 @@
 . (Join-Path $PsScriptRoot "./Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.0.2" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.0.3" -Option Constant -Scope global
 
 $THEME = "THEME_Default"
 
