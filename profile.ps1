@@ -1,14 +1,17 @@
 . (Join-Path $PsScriptRoot "./Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.0.3" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.0" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersionCodename" -Value "Thermos" -Option Constant -Scope global
 
-$THEME = "THEME_Default"
+
+$THEME = "THEME_DEFAULT"
 
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
 }
-Write-Host -NoNewline "$PowerShellAdditionsVersion" -ForegroundColor:Blue
+Write-Host -NoNewline "$PowerShellAdditionsVersion " -ForegroundColor:Blue
+Write-Host -NoNewline "($PowerShellAdditionsVersionCodename)" -ForegroundColor:Blue
 Write-Host -NoNewline " for PowerShell 7.2.2`n" -ForegroundColor:DarkGray
 
 Write-Host -NoNewline "Made by "
@@ -54,25 +57,7 @@ function prompt {
         return Invoke-Command -ScriptBlock $scriptBlock;
     }
     try {
-    if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
-    } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
-    }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
-
-    Write-Host -NoNewline "PS " -ForegroundColor "Green";
-    Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green;
-    Write-Host -NoNewline " ";
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor Blue;
-    
-    if("$CmdPromptCurrentFolder".Contains(" ")) {
-        Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta;
-    } else {
-        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta;
-    }
-    Write-Host -NoNewline -ForegroundColor:White ">";
-    return " ";
+        return Invoke-Expression $THEME
     } catch {
         return "ERROR:";
     }

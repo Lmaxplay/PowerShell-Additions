@@ -42,7 +42,7 @@ function THEME_MONOCHROME {
     return " ";
 }
 
-function THEME_SMALL {
+function THEME_MINI {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
@@ -57,4 +57,12 @@ function THEME_SMALL {
     }
     Write-Host -NoNewline -ForegroundColor:White ">";
     return " ";
+}
+
+function Set-Theme([string]$theme) {
+    $global:THEME = $theme
+}
+
+function Reset-Theme {
+    $global:THEME = "THEME_DEFAULT"
 }
