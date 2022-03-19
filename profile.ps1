@@ -1,3 +1,5 @@
+. (Join-Path $PsScriptRoot "./Scripts/data.ps1")
+
 Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.0.1" -Option Constant -Scope global
 
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
@@ -29,6 +31,10 @@ if( $IsWindows ) {
         Write-Host -NoNewline "This instance isn't elevated" -ForegroundColor White
     }
 }
+
+Write-Host -NoNewline "`n"
+
+Write-Host -NoNewline (Get-Random -InputObject $Tips) -ForegroundColor Green
 
 $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
 
@@ -88,4 +94,15 @@ function Enable-Profile {
 
 function Get-PowerShellAdditions-Version {
     return $PowerShellAdditionsVersion
+}
+
+function Update-PowerShellAdditions {
+    $opath = (Get-Item .).FullName
+    Set-Location $env:TEMP
+    mkdir -Path __TMP__ -Force
+    Set-Location "__TMP__"
+    git clone "https://github.com/Lmaxplay/PowerShell-Additions"
+    Set-Location "PowerShell-Additions"
+    ./install.ps1
+    Set-Location -Path $opath
 }

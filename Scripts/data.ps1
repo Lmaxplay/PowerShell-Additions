@@ -1,0 +1,1 @@
+$Tips = 'You can use Update-PowerShell-Additions to update!', 'Powershell Additions was made since PowerShell lacked colors by default!'

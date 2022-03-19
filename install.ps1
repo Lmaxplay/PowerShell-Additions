@@ -1,7 +1,7 @@
 try {
 if($IsWindows) {
     Copy-Item -Path "./profile.ps1" -Destination ($env:UserProfile + "\Documents\PowerShell\Microsoft.Powershell_profile.ps1")
-    #Copy-Item -Recurse -Path ".\Modules\*" -Destination ($env:UserProfile + "\Documents\PowerShell\Modules\") -Force
+    Copy-Item -Recurse -Path ".\Scripts\*" -Destination ($env:UserProfile + "\Documents\PowerShell\Scripts\") -Force
     #Copy-Item -Path "./profile.ps1" -Destination ($env:UserProfile + "\Documents\PowerShell\Microsoft.VSCode_profile.ps1") #! Disabled since ( PowerShell Integrated Console ) is better without the addons
     Write-Host "Installed succesfully, please restart PowerShell" -ForegroundColor Cyan
 } elseif ($IsLinux) {
