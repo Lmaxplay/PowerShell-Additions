@@ -24,9 +24,9 @@ if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
 
 if( $IsWindows ) {
     if((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Write-Host -NoNewline "This instance isn't elevated" -ForegroundColor White
-    } else {
         Write-Host -NoNewline "This instance is elevated" -ForegroundColor White
+    } else {
+        Write-Host -NoNewline "This instance isn't elevated" -ForegroundColor White
     }
 }
 
