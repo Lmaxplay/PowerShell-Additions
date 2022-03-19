@@ -4,6 +4,8 @@
 
 100% vanilla compatible!
 
+![In action](./Images/Image1-v1.1.1.png)"
+
 ## Q & A
 
 Q: Why should I use this  
