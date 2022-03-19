@@ -10,6 +10,9 @@ Write-Host -NoNewline " for PowerShell 7.2.2`n" -ForegroundColor:DarkGray
 Write-Host -NoNewline "Made by "
 Write-Host -NoNewline "Lmaxplay`n" -ForegroundColor:Green
 
+Write-Host -NoNewline "Updates and source at "
+Write-Host -NoNewline "https://github.com/Lmaxplay/PowerShell-Additions`n" -ForegroundColor:Green
+
 #Write-Host -NoNewline "Script is located at "
 #Write-Host -NoNewline $MyInvocation.MyCommand.Path -ForegroundColor:Blue
 #Write-Host -NoNewline "`n"
