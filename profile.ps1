@@ -1,6 +1,8 @@
-. (Join-Path $PsScriptRoot "./Scripts/data.ps1")
+. (Join-Path $PsScriptRoot "./Scripts/index.ps1")
 
 Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.0.2" -Option Constant -Scope global
+
+$THEME = "THEME_Default"
 
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
