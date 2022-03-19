@@ -1,6 +1,6 @@
 . (Join-Path $PsScriptRoot "./Scripts/data.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.0.1" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.0.2" -Option Constant -Scope global
 
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
@@ -19,10 +19,6 @@ Write-Host -NoNewline "https://github.com/Lmaxplay/PowerShell-Additions`n" -Fore
 #Write-Host -NoNewline $MyInvocation.MyCommand.Path -ForegroundColor:Blue
 #Write-Host -NoNewline "`n"
 
-if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
-    Write-Host -NoNewline "WARNING: POWERSHELL VERSION ISN'T OFFICIALLY SUPPORTED`nUNEXPECTED BEHAVIOR MAY OCCUR" -ForegroundColor:Red
-    Write-Host -NoNewline "`n"
-}
 
 if( $IsWindows ) {
     if((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
@@ -32,13 +28,19 @@ if( $IsWindows ) {
     }
 }
 
-Write-Host -NoNewline "`n"
+Write-Host -NoNewline "`n`n"
 
 Write-Host -NoNewline (Get-Random -InputObject $Tips) -ForegroundColor Green
+Write-Host -NoNewline "`n"
+
+if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
+    Write-Host -NoNewline "WARNING: POWERSHELL VERSION ISN'T OFFICIALLY SUPPORTED`nUNEXPECTED BEHAVIOR MAY OCCUR" -ForegroundColor:Red
+    Write-Host -NoNewline "`n"
+}
 
 $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
 
-Write-Host -NoNewline "`n`n"
+Write-Host -NoNewline "`n"
 
 $PowerShellAdditionsThemeEnabled = $true
 
