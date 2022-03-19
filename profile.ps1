@@ -1,4 +1,4 @@
-$PowerShellAdditionsVersion = "v1.0.1"
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.0.1" -Option Constant -Scope global
 
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
@@ -26,6 +26,8 @@ if( $IsWindows ) {
         Write-Host -NoNewline "This instance is elevated" -ForegroundColor White
     }
 }
+
+$Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
 
 Write-Host -NoNewline "`n`n"
 
@@ -79,4 +81,8 @@ function Enable-Profile {
     #>
     $global:__prfen__ = $true;
     if($global:__prfen__) {return;}; #Fix VSCode being annoying
+}
+
+function Get-PowerShellAdditions-Version {
+    return $PowerShellAdditionsVersion
 }
