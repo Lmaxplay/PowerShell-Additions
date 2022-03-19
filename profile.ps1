@@ -31,12 +31,12 @@ $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.T
 
 Write-Host -NoNewline "`n`n"
 
-$__prfen__ = $true
+$PowerShellAdditionsThemeEnabled = $true
 
 Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
-    if($__prfen__ -eq $false) {
+    if($PowerShellAdditionsThemeEnabled -eq $false) {
         $scriptBlock = [Scriptblock]::Create($__op__);
         return Invoke-Command -ScriptBlock $scriptBlock;
     }
@@ -70,8 +70,8 @@ function Disable-Profile {
     .DESCRIPTION
     Disables the PowerShell Additions profile
     #>
-    $global:__prfen__ = $false;
-    if($global:__prfen__) {return;}; #Fix VSCode being annoying
+    $global:PowerShellAdditionsThemeEnabled = $false;
+    if($global:PowerShellAdditionsThemeEnabled) {return;}; #Fix VSCode being annoying
 }
 
 function Enable-Profile {
@@ -79,8 +79,8 @@ function Enable-Profile {
     .DESCRIPTION
     Enables the PowerShell Additions profile
     #>
-    $global:__prfen__ = $true;
-    if($global:__prfen__) {return;}; #Fix VSCode being annoying
+    $global:PowerShellAdditionsThemeEnabled = $true;
+    if($global:PowerShellAdditionsThemeEnabled) {return;}; #Fix VSCode being annoying
 }
 
 function Get-PowerShellAdditions-Version {
