@@ -1,7 +1,7 @@
 . (Join-Path $PsScriptRoot "./Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.0" -Option Constant -Scope global
-Set-Variable -Name "PowerShellAdditionsVersionCodename" -Value "Thermos" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.1" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsCodename" -Value "Thermos" -Option Constant -Scope global
 
 
 $THEME = "THEME_DEFAULT"
@@ -11,7 +11,7 @@ if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
 }
 Write-Host -NoNewline "$PowerShellAdditionsVersion " -ForegroundColor:Blue
-Write-Host -NoNewline "($PowerShellAdditionsVersionCodename)" -ForegroundColor:Blue
+Write-Host -NoNewline "($PowerShellAdditionsCodename)" -ForegroundColor:Blue
 Write-Host -NoNewline " for PowerShell 7.2.2`n" -ForegroundColor:DarkGray
 
 Write-Host -NoNewline "Made by "
