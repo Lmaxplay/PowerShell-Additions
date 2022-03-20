@@ -1,3 +1,12 @@
+function Set-Theme([string]$theme) {
+    $global:THEME = $theme
+    Write-Host "Theme set to $global:THEME succesfully" -ForegroundColor Green
+}
+
+function Reset-Theme {
+    $global:THEME = "THEME_DEFAULT"
+    Write-Host "Theme reset to $global:THEME succesfully" -ForegroundColor Green
+}
 function THEME_DEFAULT {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
@@ -57,12 +66,4 @@ function THEME_MINI {
     }
     Write-Host -NoNewline -ForegroundColor:White ">";
     return " ";
-}
-
-function Set-Theme([string]$theme) {
-    $global:THEME = $theme
-}
-
-function Reset-Theme {
-    $global:THEME = "THEME_DEFAULT"
 }

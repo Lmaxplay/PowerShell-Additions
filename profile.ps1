@@ -1,6 +1,6 @@
 . (Join-Path $PsScriptRoot "./Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.1" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.2" -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsCodename" -Value "Thermos" -Option Constant -Scope global
 
 
@@ -59,7 +59,8 @@ function prompt {
     try {
         return Invoke-Expression $THEME
     } catch {
-        return "ERROR:";
+        Write-Host -NoNewline "`nTheme failed to load" -ForegroundColor Red
+        return "> ";
     }
 }
 
