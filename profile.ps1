@@ -1,6 +1,6 @@
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.3" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.4" -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsCodename" -Value "Thermos" -Option Constant -Scope global
 
 
@@ -53,17 +53,17 @@ Write-Host -NoNewline "`n"
 
 $PowerShellAdditionsThemeEnabled = $true
 
-Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
+#Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
-    if(!$wre) {
+    if(Get-Variable __wre__) {
         __wr__
-        $global:wre = $true
+        Remove-Item -Path function:__wr__
+        Remove-Variable __wre__ -Force -Scope global
     }
 
     if($PowerShellAdditionsThemeEnabled -eq $false) {
-        $scriptBlock = [Scriptblock]::Create($__op__);
-        return Invoke-Command -ScriptBlock $scriptBlock;
+        return "PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
     }
     try {
         return Invoke-Expression $THEME
