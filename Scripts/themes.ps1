@@ -1,5 +1,5 @@
-function Set-Theme([string]$theme, [bool]$Silent = $false) {
-    $global:THEME = $theme
+function Set-Theme([string]$Theme = "THEME_DEFAULT", [bool]$Silent = $false) {
+    $global:THEME = $Theme
     if(!$Silent) {
         Write-Host "Theme set to $global:THEME succesfully" -ForegroundColor Green
     }
