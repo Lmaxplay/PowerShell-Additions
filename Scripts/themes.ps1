@@ -67,3 +67,37 @@ function THEME_MINI {
     Write-Host -NoNewline -ForegroundColor:White ">";
     return " ";
 }
+
+function THEME_PSDEFAULT {
+    return "PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
+}
+
+function THEME_PSDEFAULT_COLOR {
+    Write-Host -NoNewline "PS $($executionContext.SessionState.Path.CurrentLocation)" -ForegroundColor Cyan
+    return "$('>' * ($nestedPromptLevel + 1)) ";
+}
+
+function THEME_CMD {
+    Write-Host -NoNewline "$($executionContext.SessionState.Path.CurrentLocation)" -ForegroundColor White
+    return "$('>' * ($nestedPromptLevel + 1)) ";
+}
+
+function THEME_BASH {
+    if($IsWindows) {
+        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        $CmdPromptPC = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[0];
+    } elseif ($IsLinux) {
+        $CmdPromptUser = whoami;
+    }
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+
+    Write-Host -NoNewline ($CmdPromptUser.ToString() + "@") -ForegroundColor Green;
+    
+    Write-Host -NoNewline ($CmdPromptPC.ToString()) -ForegroundColor Green;
+
+    Write-Host -NoNewline ":" -ForegroundColor White
+
+    Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Blue;
+    Write-Host -NoNewline -ForegroundColor:White "$";
+    return " ";
+}

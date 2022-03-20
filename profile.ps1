@@ -1,12 +1,12 @@
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.4" -Option Constant -Scope global
-Set-Variable -Name "PowerShellAdditionsCodename" -Value "Thermos" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.2.0" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsCodename" -Value "Dionysus" -Option Constant -Scope global
 
 
 $THEME = "THEME_DEFAULT"
 
-$__wre__ = $false;
+$__wre__ = "DISP_MSG";
 
 function __wr__ {
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
@@ -56,10 +56,10 @@ $PowerShellAdditionsThemeEnabled = $true
 #Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
-    if(Get-Variable __wre__) {
+    if([Environment]::UserInteractive -and (Get-Variable __wre__ -Scope global)) {
         __wr__
-        Remove-Item -Path function:__wr__
         Remove-Variable __wre__ -Force -Scope global
+        #Remove-Item -Path function:\__wr__ -Force -Scope global
     }
 
     if($PowerShellAdditionsThemeEnabled -eq $false) {
@@ -105,4 +105,8 @@ function Update-PowerShellAdditions {
     Set-Location "PowerShell-Additions"
     ./install.ps1
     Set-Location -Path $opath
+}
+
+if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
+    . (Join-Path $PsScriptRoot "preload.ps1");
 }
