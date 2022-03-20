@@ -1,6 +1,6 @@
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.2.0" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.2.1" -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsCodename" -Value "Dionysus" -Option Constant -Scope global
 
 
