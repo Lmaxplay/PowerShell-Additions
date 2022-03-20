@@ -103,3 +103,23 @@ function THEME_BASH {
     Write-Host -NoNewline -ForegroundColor:White "$";
     return " ";
 }
+
+function THEME_BASH_MONOCHROME {
+    if($IsWindows) {
+        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        $CmdPromptPC = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[0];
+    } elseif ($IsLinux) {
+        $CmdPromptUser = whoami;
+    }
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+
+    Write-Host -NoNewline ($CmdPromptUser.ToString() + "@");
+    
+    Write-Host -NoNewline ($CmdPromptPC.ToString());
+
+    Write-Host -NoNewline ":";
+
+    Write-Host -NoNewline $CmdPromptCurrentFolder.ToString();
+    Write-Host -NoNewline -ForegroundColor:White "$";
+    return " ";
+}
