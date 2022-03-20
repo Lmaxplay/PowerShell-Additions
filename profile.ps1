@@ -7,6 +7,8 @@ $THEME = "THEME_DEFAULT"
 
 $PWSHADDisplayMessage = $true;
 
+$Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
+
 function PWSHADIDMF {
 Write-Host -NoNewline "PowerShell Additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
@@ -44,8 +46,6 @@ if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
     Write-Host -NoNewline "WARNING: POWERSHELL VERSION ISN'T OFFICIALLY SUPPORTED`nUNEXPECTED BEHAVIOR MAY OCCUR" -ForegroundColor:Red
     Write-Host -NoNewline "`n"
 }
-
-$Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
 
 Write-Host -NoNewline "`n"
 }
