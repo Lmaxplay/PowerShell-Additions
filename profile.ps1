@@ -39,7 +39,7 @@ if( $IsWindows ) {
 
 Write-Host -NoNewline "`n`n"
 
-Write-Host -NoNewline (Get-Random -InputObject $Tips) -ForegroundColor Green
+Write-Host -NoNewline (Get-Random -InputObject $PWSHADTips) -ForegroundColor Green
 Write-Host -NoNewline "`n"
 
 if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
