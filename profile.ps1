@@ -1,11 +1,14 @@
-. (Join-Path $PsScriptRoot "./Scripts/index.ps1")
+. (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.2" -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value "v1.1.3" -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsCodename" -Value "Thermos" -Option Constant -Scope global
 
 
 $THEME = "THEME_DEFAULT"
 
+$__wre__ = $false;
+
+function __wr__ {
 Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
@@ -46,12 +49,18 @@ if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
 $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
 
 Write-Host -NoNewline "`n"
+}
 
 $PowerShellAdditionsThemeEnabled = $true
 
 Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
+    if(!$wre) {
+        __wr__
+        $global:wre = $true
+    }
+
     if($PowerShellAdditionsThemeEnabled -eq $false) {
         $scriptBlock = [Scriptblock]::Create($__op__);
         return Invoke-Command -ScriptBlock $scriptBlock;
