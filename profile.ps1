@@ -51,8 +51,6 @@ $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.T
 Write-Host -NoNewline "`n"
 }
 
-$PowerShellAdditionsThemeEnabled = $true
-
 #Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
@@ -62,33 +60,12 @@ function prompt {
         #Remove-Item -Path function:\__wr__ -Force -Scope global
     }
 
-    if($PowerShellAdditionsThemeEnabled -eq $false) {
-        return "PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
-    }
     try {
         return Invoke-Expression $THEME
     } catch {
         Write-Host -NoNewline "`nTheme failed to load" -ForegroundColor Red
         return "> ";
     }
-}
-
-function Disable-Profile {
-    <#
-    .DESCRIPTION
-    Disables the PowerShell Additions profile
-    #>
-    $global:PowerShellAdditionsThemeEnabled = $false;
-    if($global:PowerShellAdditionsThemeEnabled) {return;}; #Fix VSCode being annoying
-}
-
-function Enable-Profile {
-    <#
-    .DESCRIPTION
-    Enables the PowerShell Additions profile
-    #>
-    $global:PowerShellAdditionsThemeEnabled = $true;
-    if($global:PowerShellAdditionsThemeEnabled) {return;}; #Fix VSCode being annoying
 }
 
 function Get-PowerShellAdditions-Version {

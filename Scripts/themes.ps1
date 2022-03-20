@@ -3,6 +3,10 @@ function Set-Theme([string]$theme) {
     Write-Host "Theme set to $global:THEME succesfully" -ForegroundColor Green
 }
 
+function Silent-Set-Theme([string]$theme) {
+    $global:THEME = $theme
+}
+
 function Reset-Theme {
     $global:THEME = "THEME_DEFAULT"
     Write-Host "Theme reset to $global:THEME succesfully" -ForegroundColor Green
