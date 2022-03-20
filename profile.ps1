@@ -8,7 +8,7 @@ $THEME = "THEME_DEFAULT"
 $__wre__ = "DISP_MSG";
 
 function __wr__ {
-Write-Host -NoNewline "PowerShell additions" -ForegroundColor:Blue
+Write-Host -NoNewline "PowerShell Additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
 }
