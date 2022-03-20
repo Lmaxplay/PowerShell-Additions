@@ -1,10 +1,8 @@
-function Set-Theme([string]$theme) {
+function Set-Theme([string]$theme, [bool]$Silent = $false) {
     $global:THEME = $theme
-    Write-Host "Theme set to $global:THEME succesfully" -ForegroundColor Green
-}
-
-function Silent-Set-Theme([string]$theme) {
-    $global:THEME = $theme
+    if(!$Silent) {
+        Write-Host "Theme set to $global:THEME succesfully" -ForegroundColor Green
+    }
 }
 
 function Reset-Theme {
