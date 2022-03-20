@@ -5,9 +5,9 @@ Set-Variable -Name "PowerShellAdditionsCodename" -Value "Dionysus" -Option Const
 
 $THEME = "THEME_DEFAULT"
 
-$__wre__ = "DISP_MSG";
+$PWSHADDisplayMessage = $true;
 
-function __wr__ {
+function PWSHADIDMF {
 Write-Host -NoNewline "PowerShell Additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
@@ -53,9 +53,9 @@ Write-Host -NoNewline "`n"
 #Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
-    if([Environment]::UserInteractive -and (Get-Variable __wre__ -Scope global)) {
-        __wr__
-        Remove-Variable __wre__ -Force -Scope global
+    if([Environment]::UserInteractive -and (Get-Variable PWSHADDisplayMessage -Scope global)) {
+        PWSHADIDMF
+        Remove-Variable PWSHADDisplayMessage -Force -Scope global
         #Remove-Item -Path function:\__wr__ -Force -Scope global
     }
 
