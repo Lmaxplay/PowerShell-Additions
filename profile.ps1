@@ -81,6 +81,7 @@ function Update-PowerShellAdditions {
     Set-Location "PowerShell-Additions"
     ./install.ps1
     Set-Location -Path $opath
+    Remove-Item -Recurse -Force -Path "__TMP__"
 }
 
 if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
