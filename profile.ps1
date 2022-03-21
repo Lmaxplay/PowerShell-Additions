@@ -85,6 +85,7 @@ function Update-PowerShell-Additions {
     git clone "https://github.com/Lmaxplay/PowerShell-Additions"
     Set-Location "PowerShell-Additions"
     ./install.ps1
+    Set-Location "../.."
     Remove-Item -Recurse -Force -Path "__TMP__"
     Set-Location -Path $opath
 }
