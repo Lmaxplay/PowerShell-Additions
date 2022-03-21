@@ -76,7 +76,7 @@ function Get-PowerShellAdditions-Version {
     return $PowerShellAdditionsVersion
 }
 
-function Update-PowerShellAdditions {
+function Update-PowerShell-Additions {
     $opath = (Get-Item .).FullName
     Set-Location $env:TEMP
     Remove-Item -Recurse -Force -Path "__TMP__"
