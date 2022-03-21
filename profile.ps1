@@ -58,10 +58,16 @@ Write-Host -NoNewline "`n"
 #Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
 function prompt {
+
+    try {
+
     if([Environment]::UserInteractive -and (Get-Variable PWSHADDisplayMessage -Scope global)) {
         PWSHADIDMF
         Remove-Variable PWSHADDisplayMessage -Force -Scope global
         #Remove-Item -Path function:\__wr__ -Force -Scope global
+    }
+    } catch {
+        Write-Host -NoNewline ""
     }
 
     try {
