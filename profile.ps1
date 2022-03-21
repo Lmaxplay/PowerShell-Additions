@@ -85,8 +85,8 @@ function Update-PowerShell-Additions {
     git clone "https://github.com/Lmaxplay/PowerShell-Additions"
     Set-Location "PowerShell-Additions"
     ./install.ps1
-    Set-Location -Path $opath
     Remove-Item -Recurse -Force -Path "__TMP__"
+    Set-Location -Path $opath
 }
 
 if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
