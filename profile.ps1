@@ -61,7 +61,7 @@ function prompt {
 
     try {
 
-    if([Environment]::UserInteractive -and (Get-Variable PWSHADDisplayMessage -Scope global)) {
+    if([Environment]::UserInteractive -and (Get-Variable PWSHADDisplayMessage -Scope global -ErrorAction SilentlyContinue)) {
         PWSHADIDMF
         Remove-Variable PWSHADDisplayMessage -Force -Scope global
         #Remove-Item -Path function:\__wr__ -Force -Scope global
