@@ -3,5 +3,6 @@ $PWSHADTips = @('You can use the cmdlet Update-PowerShell-Additions to update!',
 'Use Write-Host instead of Write-Output or echo to get more control and use colors!',
 'Create custom themes by making a function for it!',
 'The default themes all start with "THEME_"',
-'The file Documents\PowerShell\preload.ps1 is loaded on startup of powershell, use it to set a custom theme!'
+'The file Documents\PowerShell\preload.ps1 is loaded on startup of powershell, use it to set a custom theme!',
+'Use theme THEME_DEFAULT_GIT to view the current git branch when the prompt appears'
 )

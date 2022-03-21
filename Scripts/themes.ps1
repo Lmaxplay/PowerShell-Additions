@@ -123,3 +123,38 @@ function THEME_BASH_MONOCHROME {
     Write-Host -NoNewline -ForegroundColor:White "$";
     return " ";
 }
+
+function THEME_ARROW {
+    Write-Host -NoNewline -ForegroundColor:Yellow "➜";
+    return " ";
+}
+
+function THEME_DEFAULT_GIT {
+    if($IsWindows) {
+        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+    } elseif ($IsLinux) {
+        $CmdPromptUser = whoami;
+    }
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+
+    Write-Host -NoNewline "PS " -ForegroundColor "Green";
+    Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green;
+    Write-Host -NoNewline " ";
+    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor Blue;
+    
+    $branch = (Get-GitBranch)
+
+    if($branch -ne $null) {
+        Write-Host -NoNewline ( "" + ($branch) + " ") -ForegroundColor Red
+    }
+
+
+    if("$CmdPromptCurrentFolder".Contains(" ")) {
+        Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta;
+    } else {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta;
+    }
+
+    Write-Host -NoNewline -ForegroundColor:White ">";
+    return " ";
+}
