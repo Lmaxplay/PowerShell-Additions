@@ -1,9 +1,14 @@
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 3, 0)) -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 3, 1)) -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsCodename" -Value "Montreal" -Option Constant -Scope global
 
-$THEME = "THEME_DEFAULT"
+try {
+    git --version | Out-Null
+    $THEME = "THEME_DEFAULT_GIT"
+} catch {
+    $THEME = "THEME_DEFAULT"
+}
 
 $PWSHADDisplayMessage = $true;
 
