@@ -85,15 +85,15 @@ function Get-PowerShellAdditions-Version {
 function Update-PowerShell-Additions {
     $opath = (Get-Item .).FullName
     Set-Location $env:TEMP
-    Remove-Item -Recurse -Force -Path "__TMP__"
-    mkdir -Path "__TMP__" -Force
-    Set-Location "__TMP__"
+    Remove-Item -Recurse -Force -Path "__TMP__" -ErrorAction SilentlyContinue
+    New-Item -Type Directory -Path "__TMP__" -Force -ErrorAction SilentlyContinue
+    Set-Location "__TMP__" -ErrorAction Break
     git clone "https://github.com/Lmaxplay/PowerShell-Additions"
-    Set-Location "PowerShell-Additions"
+    Set-Location "PowerShell-Additions" -ErrorAction Break
     ./install.ps1
-    Set-Location "../.."
-    Remove-Item -Recurse -Force -Path "__TMP__"
-    Set-Location -Path $opath
+    Set-Location "../.." -ErrorAction Break
+    Remove-Item -Recurse -Force -Path "__TMP__" -ErrorAction SilentlyContinue
+    Set-Location -Path $opath -ErrorAction Break
 }
 
 if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
