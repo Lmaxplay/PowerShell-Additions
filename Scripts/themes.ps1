@@ -1,14 +1,53 @@
-function Set-Theme([string]$Theme = "THEME_DEFAULT", [bool]$Silent = $false) {
+<#
+    .SYNOPSIS
+    Sets the theme
+
+    .DESCRIPTION
+    Sets the theme to the input Theme
+
+    .PARAMETER Theme
+    The theme's name
+
+    .PARAMETER Silent
+    If set to true it won't print a message
+    
+    .EXAMPLE
+    Set-Theme THEME_DEFAULT
+    
+    .EXAMPLE
+    Set-Theme THEME_MONOCHROME
+#>
+function Set-Theme {
+    param (
+        [String] $Theme,
+        [Boolean] $Silent = $false
+    )
     $global:THEME = $Theme
     if(!$Silent) {
         Write-Host "Theme set to $global:THEME succesfully" -ForegroundColor Green
     }
 }
 
+<#
+    .SYNOPSIS
+    Sets the theme to the default theme
+
+    .DESCRIPTION
+    Sets the theme to the default theme
+
+    .PARAMETER Silent
+    If set to true it won't print a message
+#>
 function Reset-Theme {
+    param (
+        [bool] $Silent = $false
+    )
     $global:THEME = "THEME_DEFAULT"
+    if(!$Silent) {
     Write-Host "Theme reset to $global:THEME succesfully" -ForegroundColor Green
+    }
 }
+
 function THEME_DEFAULT {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];

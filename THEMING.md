@@ -5,5 +5,3 @@ Make a function that returns " " (this is to prevent powershell from thinking it
 
 Step 2:  
 Do Set-Theme {functionname}
-
-Step 3:
