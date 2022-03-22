@@ -88,7 +88,7 @@ function Update-PowerShell-Additions {
     Remove-Item -Recurse -Force -Path "__TMP__" -ErrorAction SilentlyContinue
     New-Item -Type Directory -Path "__TMP__" -Force -ErrorAction SilentlyContinue
     Set-Location "__TMP__" -ErrorAction Break
-    git clone "https://github.com/Lmaxplay/PowerShell-Additions"
+    git clone --depth=1 "https://github.com/Lmaxplay/PowerShell-Additions"
     Set-Location "PowerShell-Additions" -ErrorAction Break
     ./install.ps1
     Set-Location "../.." -ErrorAction Break
