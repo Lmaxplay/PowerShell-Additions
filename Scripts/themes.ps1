@@ -48,6 +48,8 @@ function Reset-Theme {
     }
 }
 
+#region Themes
+
 function THEME_DEFAULT {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
@@ -410,3 +412,5 @@ function THEME_AMRO {
     Write-Host -NoNewline -ForegroundColor:White "`n";
     return " ";
 }
+
+#endregion Themes
