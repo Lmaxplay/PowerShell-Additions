@@ -1,6 +1,6 @@
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 4, 0)) -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 4, 1)) -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsCodename" -Value "Pythagoras" -Option Constant -Scope global
 
 try {
