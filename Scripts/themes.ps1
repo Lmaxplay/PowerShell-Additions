@@ -300,6 +300,7 @@ function THEME_CMD {
 function THEME_BASH {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptPC = [System.Net.Dns]::GetHostName();
         $CmdPromptPC = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[0];
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
@@ -325,6 +326,7 @@ function THEME_BASH {
 function THEME_BASH_MONOCHROME {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptPC = [System.Net.Dns]::GetHostName();
         $CmdPromptPC = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[0];
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
