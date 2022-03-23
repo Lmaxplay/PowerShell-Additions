@@ -312,11 +312,12 @@ function THEME_BASH {
 
     Write-Host -NoNewline ":" -ForegroundColor White;
 
-    if($env:USERPROFILE -ne (Get-Location).Path) {
-        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Blue;
+    if((Get-Location).Path.StartsWith($env:USERPROFILE)) {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString().Replace($env:USERPROFILE, "~") -ForegroundColor Blue;
     } else {
-        Write-Host -NoNewline "~" -ForegroundColor Blue;
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Blue;
     }
+
     Write-Host -NoNewline -ForegroundColor:White "$";
     return " ";
 }
@@ -336,10 +337,10 @@ function THEME_BASH_MONOCHROME {
 
     Write-Host -NoNewline ":";
 
-    if($env:USERPROFILE -ne (Get-Location).Path) {
-        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString();
+    if((Get-Location).Path.StartsWith($env:USERPROFILE)) {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString().Replace($env:USERPROFILE, "~");
     } else {
-        Write-Host -NoNewline "~";
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString();
     }
 
     Write-Host -NoNewline -ForegroundColor:White "$";
