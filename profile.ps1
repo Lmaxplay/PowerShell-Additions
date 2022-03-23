@@ -5,7 +5,8 @@ Set-Variable -Name "PowerShellAdditionsCodename" -Value "Pythagoras" -Option Con
 
 try {
     git --version | Out-Null
-    $THEME = "THEME_DEFAULT_GIT"
+    $THEME = "THEME_DEFAULT"
+    # $THEME = "THEME_DEFAULT_GIT"
 } catch {
     $THEME = "THEME_DEFAULT"
 }
