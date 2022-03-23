@@ -312,7 +312,11 @@ function THEME_BASH {
 
     Write-Host -NoNewline ":" -ForegroundColor White;
 
-    Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Blue;
+    if($env:USERPROFILE -ne (Get-Location).Path) {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Blue;
+    } else {
+        Write-Host -NoNewline "~" -ForegroundColor Blue;
+    }
     Write-Host -NoNewline -ForegroundColor:White "$";
     return " ";
 }
@@ -332,7 +336,12 @@ function THEME_BASH_MONOCHROME {
 
     Write-Host -NoNewline ":";
 
-    Write-Host -NoNewline $CmdPromptCurrentFolder.ToString();
+    if($env:USERPROFILE -ne (Get-Location).Path) {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString();
+    } else {
+        Write-Host -NoNewline "~";
+    }
+
     Write-Host -NoNewline -ForegroundColor:White "$";
     return " ";
 }
@@ -398,7 +407,7 @@ function THEME_AMRO {
     
     $branch = (Get-GitBranch)
 
-    if($branch -ne $null) {
+    if($null -ne $branch) {
         Write-Host -NoNewline ( "" + ($branch) + " ") -ForegroundColor Red
     }
 
