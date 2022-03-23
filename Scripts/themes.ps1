@@ -287,7 +287,7 @@ function THEME_PSDEFAULT_COLOR {
     return "$('>' * ($nestedPromptLevel + 1)) ";
 }
 
-function THEME_PSDEFAULT_COLOR {
+function THEME_PSDEFAULT_COLOR_NL {
     Write-Host -NoNewline "PS $($executionContext.SessionState.Path.CurrentLocation)" -ForegroundColor Cyan
     return "$("`n>" * ($nestedPromptLevel + 1)) ";
 }
