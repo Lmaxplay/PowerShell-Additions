@@ -19,7 +19,7 @@ Write-Host -NoNewline "PowerShell Additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
 }
-Write-Host -NoNewline "$PowerShellAdditionsVersion " -ForegroundColor:Blue
+Write-Host -NoNewline "$fVersion " -ForegroundColor:Blue
 Write-Host -NoNewline "($PowerShellAdditionsCodename)" -ForegroundColor:Blue
 Write-Host -NoNewline " for PowerShell 7.2.2`n" -ForegroundColor:DarkGray
 
