@@ -4,7 +4,7 @@
 
 100% vanilla compatible!
 
-![In action](./Images/Image1-v1.1.1.png)"
+![In action](./Images/Preview.png)"
 
 ## Q & A
 
