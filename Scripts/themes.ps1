@@ -295,7 +295,7 @@ function THEME_PSDEFAULT_COLOR_NL {
 function THEME_CMD {
     Write-Host -NoNewline "$($executionContext.SessionState.Path.CurrentLocation)" -ForegroundColor White
     Write-Host -NoNewline "$('>' * ($nestedPromptLevel + 1))" -ForegroundColor White
-    return "$('>' * ($nestedPromptLevel + 1)) ";
+    return " ";
 }
 
 function THEME_BASH {

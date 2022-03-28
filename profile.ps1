@@ -1,3 +1,5 @@
+#PWSHAD
+
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
 Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 4, 1)) -Option Constant -Scope global
@@ -100,4 +102,3 @@ function Update-PowerShell-Additions {
 if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
     . (Join-Path $PsScriptRoot "preload.ps1");
 }
-
