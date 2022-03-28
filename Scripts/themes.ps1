@@ -349,6 +349,58 @@ function THEME_BASH_MONOCHROME {
     return " ";
 }
 
+function THEME_BASH_NL {
+    if($IsWindows) {
+        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptPC = [System.Net.Dns]::GetHostName();
+        $CmdPromptPC = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[0];
+    } elseif ($IsLinux) {
+        $CmdPromptUser = whoami;
+    }
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+
+    Write-Host -NoNewline ($CmdPromptUser.ToString() + "@") -ForegroundColor Green;
+    
+    Write-Host -NoNewline ($CmdPromptPC.ToString()) -ForegroundColor Green;
+
+    Write-Host -NoNewline ":" -ForegroundColor White;
+
+    if((Get-Location).Path.StartsWith($env:USERPROFILE)) {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString().Replace($env:USERPROFILE, "~") -ForegroundColor Blue;
+    } else {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Blue;
+    }
+
+    Write-Host -NoNewline -ForegroundColor:White "`n$";
+    return " ";
+}
+
+function THEME_BASH_MONOCHROME_NL {
+    if($IsWindows) {
+        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptPC = [System.Net.Dns]::GetHostName();
+        $CmdPromptPC = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[0];
+    } elseif ($IsLinux) {
+        $CmdPromptUser = whoami;
+    }
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+
+    Write-Host -NoNewline ($CmdPromptUser.ToString() + "@");
+    
+    Write-Host -NoNewline ($CmdPromptPC.ToString());
+
+    Write-Host -NoNewline ":";
+
+    if((Get-Location).Path.StartsWith($env:USERPROFILE)) {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString().Replace($env:USERPROFILE, "~");
+    } else {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString();
+    }
+
+    Write-Host -NoNewline -ForegroundColor:White "`n$";
+    return " ";
+}
+
 function THEME_BASH_MAGENTA {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
