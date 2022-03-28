@@ -17,6 +17,8 @@ $PWSHADDisplayMessage = $true;
 
 $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
 
+#region watermark
+
 function PWSHADIDMF {
 Write-Host -NoNewline "PowerShell Additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
@@ -35,7 +37,6 @@ Write-Host -NoNewline "https://github.com/Lmaxplay/PowerShell-Additions`n" -Fore
 #Write-Host -NoNewline "Script is located at "
 #Write-Host -NoNewline $MyInvocation.MyCommand.Path -ForegroundColor:Blue
 #Write-Host -NoNewline "`n"
-
 
 if( $IsWindows ) {
     if((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
@@ -57,6 +58,8 @@ if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
 
 Write-Host -NoNewline "`n"
 }
+
+#endregion watermark
 
 #Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
@@ -85,7 +88,7 @@ function Get-PowerShellAdditions-Version {
     return $PowerShellAdditionsVersion
 }
 
-function Update-PowerShell-Additions {
+function Update-PowerShellAdditions {
     $opath = (Get-Item .).FullName
     Set-Location $env:TEMP
     Remove-Item -Recurse -Force -Path "__TMP__" -ErrorAction SilentlyContinue

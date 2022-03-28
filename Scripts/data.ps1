@@ -5,5 +5,6 @@ $PWSHADTips = @('You can use the cmdlet Update-PowerShell-Additions to update!',
 'The default themes all start with "THEME_"',
 'The file Documents\PowerShell\preload.ps1 is loaded on startup of powershell, use it to set a custom theme!',
 'Use theme THEME_DEFAULT_GIT to view the current git branch when the prompt appears',
-'Themes that have the command on the next line end with "_NL"'
+'Themes that have the command on the next line end with "_NL"',
+'Prevent PowerShell additions from loading (for compatibility reasons) using `pwsh -NoProfile`'
 )
