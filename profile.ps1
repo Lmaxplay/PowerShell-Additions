@@ -14,6 +14,10 @@ try {
     $THEME = "THEME_DEFAULT"
 }
 
+if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
+    . (Join-Path $PsScriptRoot "preload.ps1");
+}
+
 $PWSHADDisplayMessage = $true;
 
 $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
@@ -107,6 +111,6 @@ function Update-PowerShellAdditions {
     Set-Location -Path $opath -ErrorAction Break
 }
 
-if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
-    . (Join-Path $PsScriptRoot "preload.ps1");
+if ((Test-Path (Join-Path $PsScriptRoot "postload.ps1"))) {
+    . (Join-Path $PsScriptRoot "postload.ps1");
 }
