@@ -4,15 +4,9 @@
 
 Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 5, 0)) -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsPowerShellSupportedVersion" -Value (New-Object -TypeName Version -ArgumentList @(7, 2, 2)) -Option Constant -Scope global
-Set-Variable -Name "PowerShellAdditionsCodename" -Value "World" -Option Constant -Scope global
+#Set-Variable -Name "PowerShellAdditionsCodename" -Value "" -Option Constant -Scope global
 
-try {
-    git --version | Out-Null
-    $THEME = "THEME_DEFAULT"
-    # $THEME = "THEME_DEFAULT_GIT"
-} catch {
-    $THEME = "THEME_DEFAULT"
-}
+$THEME = "THEME_DEFAULT"
 
 if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
     . (Join-Path $PsScriptRoot "preload.ps1");
@@ -30,7 +24,7 @@ if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
 }
 Write-Host -NoNewline "$PowerShellAdditionsVersion " -ForegroundColor:Blue
-Write-Host -NoNewline "($PowerShellAdditionsCodename)" -ForegroundColor:Blue
+#Write-Host -NoNewline "($PowerShellAdditionsCodename)" -ForegroundColor:Blue
 Write-Host -NoNewline " for PowerShell 7.2.2`n" -ForegroundColor:DarkGray
 
 Write-Host -NoNewline "Made by "
