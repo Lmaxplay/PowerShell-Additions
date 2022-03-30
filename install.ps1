@@ -7,11 +7,14 @@ if($IsWindows) {
     #Copy-Item -Path "./profile.ps1" -Destination ($env:UserProfile + "\Documents\PowerShell\Microsoft.VSCode_profile.ps1") #! Disabled since ( PowerShell Integrated Console ) is better without the addons
     Write-Host "Installed succesfully, please restart PowerShell" -ForegroundColor Cyan
 } elseif ($IsLinux) {
-    Remove-Item -Recurse -Force -Path ("/home/" + $env:USER + "/.config/powershell/")
-    #Copy-Item -Path "./profile.ps1" -Destination ("/home/" + $env:USER + "/.config/powershell/Microsoft.PowerShell_profile.ps1") -Force
-    #Copy-Item -Path "./Scripts" -Destination ("/home/" + $env:USER + "/.config/powershell/") -Force
-    Write-Host "Install failed, Linux isn't supported" -ForegroundColor Red
+    Write-Host "Sorry, but this script is not supported on Linux" -ForegroundColor Red
+} elseif ($IsMacOS) {
+    Write-Host "Sorry, but this script is not supported on MacOS" -ForegroundColor Red
+} else {
+    Write-Host "Sorry, but this script is not supported on your OS" -ForegroundColor Red
 }
+exit 0
 } catch {
-    Write-Host "Install failed" -ForegroundColor Red
+    Write-Host "Something went wrong, please try again, if this keeps happening, make an issue on https://github.com/Lmaxplay/PowerShell-Additions" -ForegroundColor Red
+    exit 1
 }
