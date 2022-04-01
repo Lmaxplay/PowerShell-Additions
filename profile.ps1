@@ -16,8 +16,6 @@ $PWSHADDisplayMessage = $true;
 
 $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
 
-#region watermark
-
 function PowerShellAdditionsWatermark {
 Write-Host -NoNewline "PowerShell Additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
@@ -57,8 +55,6 @@ if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
 
 Write-Host -NoNewline "`n"
 }
-
-#endregion watermark
 
 #Set-Variable -Name "__op__" -Value ${function:prompt} -Option Constant -Scope global # Save the old prompt function so we can disable the custom one
 
