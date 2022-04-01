@@ -2,7 +2,7 @@
 
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 5, 0)) -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 5, 1)) -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsPowerShellSupportedVersion" -Value (New-Object -TypeName Version -ArgumentList @(7, 2, 2)) -Option Constant -Scope global
 #Set-Variable -Name "PowerShellAdditionsCodename" -Value "" -Option Constant -Scope global
 
@@ -18,7 +18,7 @@ $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.T
 
 #region watermark
 
-function PowerShell-Additions-Watermark {
+function PowerShellAdditionsWatermark {
 Write-Host -NoNewline "PowerShell Additions" -ForegroundColor:Blue
 if($PowerShellAdditionsVersion -ne "") {
     Write-Host -NoNewline " "
@@ -67,8 +67,9 @@ function prompt {
     try {
 
     if([Environment]::UserInteractive -and (Get-Variable PWSHADDisplayMessage -Scope global -ErrorAction SilentlyContinue)) {
-        PowerShell-Additions-Watermark
+        PowerShellAdditionsWatermark
         Remove-Variable PWSHADDisplayMessage -Force -Scope global
+        $PWSHADDisplayMessage
         
         # Delete the function PowerShell-Additions-Watermark
         Remove-Item -Path function:\PowerShell-Additions-Watermark -Force

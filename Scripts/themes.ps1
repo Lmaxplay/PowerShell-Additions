@@ -42,7 +42,7 @@ function Set-Theme {
 #>
 function Reset-Theme {
     param (
-        [bool] $Silent = $false
+        [Boolean] $Silent = $false
     )
     $global:THEME = "THEME_DEFAULT"
     if(!$Silent) {
@@ -535,9 +535,9 @@ function THEME_BLUE_NL_NO_PS {
 
 function THEME_MINI {
     if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
+        #$CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
 
@@ -552,9 +552,9 @@ function THEME_MINI {
 
 function THEME_MINI_NL {
     if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
+        #$CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
 
@@ -777,36 +777,6 @@ function THEME_BASH_RED_NL {
 
 function THEME_ARROW {
     Write-Host -NoNewline -ForegroundColor:Yellow "➜";
-    return " ";
-}
-
-function THEME_AMRO {
-    if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
-    } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
-    }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
-
-    Write-Host -NoNewline "PS " -ForegroundColor "Green";
-    Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green;
-    Write-Host -NoNewline " ";
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor Blue;
-    
-    $branch = (Get-GitBranch)
-
-    if($null -ne $branch) {
-        Write-Host -NoNewline ( "" + ($branch) + " ") -ForegroundColor Red
-    }
-
-
-    if("$CmdPromptCurrentFolder".Contains(" ")) {
-        Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta;
-    } else {
-        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta;
-    }
-
-    Write-Host -NoNewline -ForegroundColor:White "`n";
     return " ";
 }
 
