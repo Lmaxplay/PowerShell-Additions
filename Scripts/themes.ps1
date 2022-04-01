@@ -19,6 +19,8 @@
 #>
 function Set-Theme {
     param (
+        # Make $Theme the name of a function
+        [Parameter(Mandatory=$true)]
         [String] $Theme,
         [Boolean] $Silent = $false
     )
@@ -510,7 +512,6 @@ function THEME_BLUE_NO_PS {
     Write-Host -NoNewline ">" -ForegroundColor White;
     return " ";
 }
-# with a newline
 function THEME_BLUE_NL_NO_PS {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
