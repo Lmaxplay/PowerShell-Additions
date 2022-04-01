@@ -139,7 +139,7 @@ function THEME_DEFAULT_NL_NO_PS {
         Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta;
     }
 
-    Write-Host -NoNewline -ForegroundColor:White ">";
+    Write-Host -NoNewline -ForegroundColor:White "`n>";
     return " ";
 }
 
@@ -282,6 +282,40 @@ function THEME_MAGENTA_NL {
     return " ";
 }
 
+function THEME_MAGENTA_NO_PS {
+    if($IsWindows) {
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+    } elseif ($IsLinux) {
+        #$CmdPromptUser = whoami;
+    }
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    
+    if("$CmdPromptCurrentFolder".Contains(" ")) {
+        Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta;
+    } else {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta;
+    }
+    Write-Host -NoNewline ">" -ForegroundColor White;
+    return " ";
+}
+
+function THEME_MAGENTA_NL_NO_PS {
+    if($IsWindows) {
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+    } elseif ($IsLinux) {
+        #$CmdPromptUser = whoami;
+    }
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    
+    if("$CmdPromptCurrentFolder".Contains(" ")) {
+        Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta;
+    } else {
+        Write-Host -NoNewline $CmdPromptCurrentFolder.ToString() -ForegroundColor Magenta;
+    }
+    Write-Host -NoNewline "`n>" -ForegroundColor White;
+    return " ";
+}
+
 function THEME_RED {
     if($IsWindows) {
         $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
@@ -328,13 +362,11 @@ function THEME_RED_NL {
 
 function THEME_RED_NO_PS {
     if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
+        #$CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
-
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor DarkRed;
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Red;
@@ -347,13 +379,11 @@ function THEME_RED_NO_PS {
 
 function THEME_RED_NL_NO_PS {
     if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
+        #$CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
-
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor DarkRed;
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Red;
@@ -409,16 +439,11 @@ function THEME_GREEN_NL {
 
 function THEME_GREEN_NO_PS {
     if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
+        #$CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
-
-    Write-Host -NoNewline "PS " -ForegroundColor DarkGreen;
-    Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor DarkGreen;
-    Write-Host -NoNewline " ";
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor DarkGreen;
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Green;
@@ -431,14 +456,11 @@ function THEME_GREEN_NO_PS {
 
 function THEME_GREEN_NL_NO_PS {
     if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
+        #$CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
-
-    Write-Host -NoNewline " ";
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor DarkGreen;
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Green;
@@ -495,14 +517,11 @@ function THEME_BLUE_NL {
 
 function THEME_BLUE_NO_PS {
     if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
+        #$CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
-
-    Write-Host -NoNewline " ";
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor DarkCyan;
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Cyan;
@@ -514,14 +533,11 @@ function THEME_BLUE_NO_PS {
 }
 function THEME_BLUE_NL_NO_PS {
     if($IsWindows) {
-        $CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
+        #$CmdPromptUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1];
     } elseif ($IsLinux) {
-        $CmdPromptUser = whoami;
+        #$CmdPromptUser = whoami;
     }
     $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
-
-    Write-Host -NoNewline " ";
-    Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor DarkCyan;
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Cyan;
