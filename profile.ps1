@@ -67,9 +67,10 @@ function prompt {
     try {
 
     if([Environment]::UserInteractive -and (Get-Variable PWSHADDisplayMessage -Scope global -ErrorAction SilentlyContinue)) {
-        PowerShellAdditionsWatermark
+        if($PWSHADDisplayMessage) {
+            PowerShellAdditionsWatermark
+        }
         Remove-Variable PWSHADDisplayMessage -Force -Scope global
-        $PWSHADDisplayMessage
         
         # Delete the function PowerShell-Additions-Watermark
         Remove-Item -Path function:\PowerShell-Additions-Watermark -Force
