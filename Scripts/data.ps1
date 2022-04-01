@@ -9,5 +9,3 @@ $PWSHADTips = @('You can use the cmdlet Update-PowerShellAdditions to update!',
 'Themes that have the command on the next line end with "_NL"',
 'Prevent PowerShell additions from loading (for compatibility reasons) using `pwsh -NoProfile`'
 )
-
--$PWSHADTips
