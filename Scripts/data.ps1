@@ -10,4 +10,4 @@ $PWSHADTips = @('You can use the cmdlet Update-PowerShellAdditions to update!',
 'Prevent PowerShell additions from loading (for compatibility reasons) using `pwsh -NoProfile`'
 )
 
-$PWSHADTips
+-$PWSHADTips
