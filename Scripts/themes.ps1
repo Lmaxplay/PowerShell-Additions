@@ -1,3 +1,5 @@
+#region Commands
+
 <#
     .SYNOPSIS
     Sets the theme
@@ -49,6 +51,8 @@ function Reset-Theme {
     Write-Host "Theme reset to $global:THEME succesfully" -ForegroundColor Green
     }
 }
+
+#endregion Commands
 
 #region Themes
 
