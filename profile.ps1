@@ -69,7 +69,7 @@ function prompt {
         Remove-Variable PWSHADDisplayMessage -Force -Scope global
         
         # Delete the function PowerShell-Additions-Watermark
-        Remove-Item -Path function:\PowerShell-Additions-Watermark -Force
+        Remove-Item -Path function:\PowerShellAdditionsWatermark -Force
 
         #Remove-Item -Path function:\__wr__ -Force -Scope global
     }
