@@ -2,11 +2,18 @@
 
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
-Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 5, 1)) -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 5, 2)) -Option Constant -Scope global
 Set-Variable -Name "PowerShellAdditionsPowerShellSupportedVersion" -Value (New-Object -TypeName Version -ArgumentList @(7, 2, 2)) -Option Constant -Scope global
 #Set-Variable -Name "PowerShellAdditionsCodename" -Value "" -Option Constant -Scope global
 
 $THEME = "THEME_DEFAULT"
+
+try {
+    git | Out-Null
+    $THEME = "THEME_DEFAULT_GIT"
+} catch {
+    $THEME = "THEME_DEFAULT"
+}
 
 if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
     . (Join-Path $PsScriptRoot "preload.ps1");
