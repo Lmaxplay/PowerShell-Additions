@@ -62,7 +62,7 @@ function THEME_DEFAULT {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor Green;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green;
@@ -84,7 +84,7 @@ function THEME_DEFAULT_GIT {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor "Green";
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green;
@@ -113,7 +113,7 @@ function THEME_DEFAULT_NO_PS {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor Blue;
 
@@ -133,7 +133,7 @@ function THEME_DEFAULT_NL_NO_PS {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + " ") -ForegroundColor Blue;
 
@@ -153,7 +153,7 @@ function THEME_DEFAULT_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor Green;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green;
@@ -175,7 +175,7 @@ function THEME_DEFAULT_GIT_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor "Green";
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Green;
@@ -204,7 +204,7 @@ function THEME_MONOCHROME {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS ";
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString());
@@ -226,7 +226,7 @@ function THEME_MONOCHROME_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS ";
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString());
@@ -248,7 +248,7 @@ function THEME_MAGENTA {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor DarkMagenta;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor DarkMagenta;
@@ -270,7 +270,7 @@ function THEME_MAGENTA_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor DarkMagenta;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor DarkMagenta;
@@ -292,7 +292,7 @@ function THEME_MAGENTA_NO_PS {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta;
@@ -309,7 +309,7 @@ function THEME_MAGENTA_NL_NO_PS {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Magenta;
@@ -326,7 +326,7 @@ function THEME_RED {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor DarkRed;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor DarkRed;
@@ -348,7 +348,7 @@ function THEME_RED_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor DarkRed;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor DarkRed;
@@ -370,7 +370,7 @@ function THEME_RED_NO_PS {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Red;
@@ -387,7 +387,7 @@ function THEME_RED_NL_NO_PS {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Red;
@@ -404,7 +404,7 @@ function THEME_GREEN {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor DarkGreen;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor DarkGreen;
@@ -425,7 +425,7 @@ function THEME_GREEN_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor DarkGreen;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor DarkGreen;
@@ -447,7 +447,7 @@ function THEME_GREEN_NO_PS {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Green;
@@ -464,7 +464,7 @@ function THEME_GREEN_NL_NO_PS {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Green;
@@ -481,7 +481,7 @@ function THEME_BLUE {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor Blue;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Blue;
@@ -503,7 +503,7 @@ function THEME_BLUE_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline "PS " -ForegroundColor Blue;
     Write-Host -NoNewline ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString()) -ForegroundColor Blue;
@@ -525,7 +525,7 @@ function THEME_BLUE_NO_PS {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Cyan;
@@ -541,7 +541,7 @@ function THEME_BLUE_NL_NO_PS {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
     
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Cyan;
@@ -559,7 +559,7 @@ function THEME_MINI {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Green;
@@ -576,7 +576,7 @@ function THEME_MINI_NL {
     } elseif ($IsLinux) {
         #$CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     if("$CmdPromptCurrentFolder".Contains(" ")) {
         Write-Host -NoNewline ("`"" + $CmdPromptCurrentFolder.ToString() + "`"") -ForegroundColor Green;
@@ -619,7 +619,7 @@ function THEME_BASH {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + "@") -ForegroundColor Green;
     
@@ -645,7 +645,7 @@ function THEME_BASH_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + "@") -ForegroundColor Green;
     
@@ -671,7 +671,7 @@ function THEME_BASH_MONOCHROME {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + "@");
     
@@ -697,7 +697,7 @@ function THEME_BASH_MONOCHROME_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + "@");
     
@@ -722,7 +722,7 @@ function THEME_BASH_MAGENTA {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + "@") -ForegroundColor Magenta;
     
@@ -742,7 +742,7 @@ function THEME_BASH_MAGENTA_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + "@") -ForegroundColor Magenta;
     
@@ -762,7 +762,7 @@ function THEME_BASH_RED {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + "@") -ForegroundColor Red;
     
@@ -782,7 +782,7 @@ function THEME_BASH_RED_NL {
     } elseif ($IsLinux) {
         $CmdPromptUser = whoami;
     }
-    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation;
+    $CmdPromptCurrentFolder = $executionContext.SessionState.Path.CurrentLocation.ToString().Replace("Microsoft.PowerShell.Core\FileSystem::\", "");
 
     Write-Host -NoNewline ($CmdPromptUser.ToString() + "@") -ForegroundColor Red;
     
