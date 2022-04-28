@@ -3,7 +3,7 @@
 . (Join-Path $PsScriptRoot "Scripts/index.ps1")
 
 Set-Variable -Name "PowerShellAdditionsVersion" -Value (New-Object -TypeName Version -ArgumentList @(1, 5, 3)) -Option Constant -Scope global
-Set-Variable -Name "PowerShellAdditionsPowerShellSupportedVersion" -Value (New-Object -TypeName Version -ArgumentList @(7, 2, 2)) -Option Constant -Scope global
+Set-Variable -Name "PowerShellAdditionsPowerShellSupportedVersion" -Value (New-Object -TypeName Version -ArgumentList @(7, 2)) -Option Constant -Scope global
 #Set-Variable -Name "PowerShellAdditionsCodename" -Value "" -Option Constant -Scope global
 
 $THEME = "THEME_DEFAULT"
@@ -30,7 +30,8 @@ if($PowerShellAdditionsVersion -ne "") {
 }
 Write-Host -NoNewline "$PowerShellAdditionsVersion" -ForegroundColor:Blue
 #Write-Host -NoNewline "($PowerShellAdditionsCodename)" -ForegroundColor:Blue
-Write-Host -NoNewline " for PowerShell 7.2.2`n" -ForegroundColor:DarkGray
+$PowerShellAdditionsPowerShellSupportedVersionString = $PowerShellAdditionsPowerShellSupportedVersion.Major.ToString() + "." + $PowerShellAdditionsPowerShellSupportedVersion.Minor.ToString()
+Write-Host -NoNewline " for PowerShell $PowerShellAdditionsPowerShellSupportedVersionString`n" -ForegroundColor:DarkGray
 
 Write-Host -NoNewline "Made by "
 Write-Host -NoNewline "Lmaxplay`n" -ForegroundColor:Green
@@ -55,7 +56,8 @@ Write-Host -NoNewline "`n`n"
 Write-Host -NoNewline (Get-Random -InputObject $PWSHADTips) -ForegroundColor Green
 Write-Host -NoNewline "`n"
 
-if( $PSVersionTable.PSVersion -ne "7.2.2" ) {
+if( $PSVersionTable.PSVersion -le $PowerShellAdditionsPowerShellSupportedVersion ) {
+    Write-Host $PowerShellAdditionsPowerShellSupportedVersion
     Write-Host -NoNewline "WARNING: POWERSHELL VERSION ISN'T OFFICIALLY SUPPORTED`nUNEXPECTED BEHAVIOR MAY OCCUR" -ForegroundColor:Red
     Write-Host -NoNewline "`n"
 }
