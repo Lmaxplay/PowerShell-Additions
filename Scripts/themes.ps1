@@ -800,7 +800,8 @@ function THEME_ARROW {
     return " ";
 }
 
-function THEME_LINED {
+
+function THEME_LINEBOSS {
     # Available characters
     # 
 
