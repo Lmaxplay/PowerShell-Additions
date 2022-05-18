@@ -847,6 +847,11 @@ function THEME_LINEBOSS {
 
     # Get the current drive
     $Drive = $pwd.ToString().Split('\')[0]
+
+    if($Drive.EndsWith(":")) {
+        $Drive = $Drive.Replace(":", "")
+    }
+
     if ($Drive -eq "Microsoft.PowerShell.Core") {
         # we are on an UNC path, so make the drive letter UNC
         $Drive = "UNC (" + $pwd.ToString().Split("\")[3] + ")"
@@ -940,6 +945,12 @@ function THEME_LINEBOSS_ICONS {
 
     # Get the current drive
     $Drive = $pwd.ToString().Split('\')[0]
+    # If it ends with a ":" it's a drive letter
+
+    if($Drive.EndsWith(":")) {
+        $Drive = $Drive.Replace(":", "")
+    }
+
     if ($Drive -eq "Microsoft.PowerShell.Core") {
         # we are on an UNC path, so make the drive letter UNC
         $Drive = "UNC (" + $pwd.ToString().Split("\")[3] + ")"
