@@ -841,10 +841,17 @@ function THEME_LINEBOSS {
     }
 
     $Path = $Path.Replace('\', '/')
+    if($Path.StartsWith($pwd.ToString().Split("\")[3])) {
+        $Path = $Path.Substring($pwd.ToString().Split("\")[3].Length)
+    }
 
-    # Get the current drive and prepend it to the path
-    $Drive = [System.Environment]::GetEnvironmentVariable('SystemDrive').Replace(":", "")
-
+    # Get the current drive
+    $Drive = $pwd.ToString().Split('\')[0]
+    if ($Drive -eq "Microsoft.PowerShell.Core") {
+        # we are on an UNC path, so make the drive letter UNC
+        $Drive = "UNC (" + $pwd.ToString().Split("\")[3] + ")"
+    }
+    
     # Username
     Write-Host -NoNewline $Seperator -BackgroundColor Blue -ForegroundColor Black
     Write-Host -NoNewline " $UserName " -BackgroundColor Blue -ForegroundColor Black
@@ -927,9 +934,16 @@ function THEME_LINEBOSS_ICONS {
     }
 
     $Path = $Path.Replace('\', '/')
+    if($Path.StartsWith($pwd.ToString().Split("\")[3])) {
+        $Path = $Path.Substring($pwd.ToString().Split("\")[3].Length)
+    }
 
-    # Get the current drive and prepend it to the path
-    $Drive = [System.Environment]::GetEnvironmentVariable('SystemDrive').Replace(":", "")
+    # Get the current drive
+    $Drive = $pwd.ToString().Split('\')[0]
+    if ($Drive -eq "Microsoft.PowerShell.Core") {
+        # we are on an UNC path, so make the drive letter UNC
+        $Drive = "UNC (" + $pwd.ToString().Split("\")[3] + ")"
+    }
 
     # Username
     Write-Host -NoNewline $Seperator -BackgroundColor Blue -ForegroundColor Black
