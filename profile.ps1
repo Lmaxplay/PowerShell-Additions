@@ -21,7 +21,7 @@ if ((Test-Path (Join-Path $PsScriptRoot "preload.ps1"))) {
 
 $PWSHADDisplayMessage = $true;
 
-$Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
+# $Host.UI.RawUI.windowTitle = ("PowerShell " + ($PSVersionTable.PSVersion.Major.ToString() + "." + $PSVersionTable.PSVersion.Minor.ToString() + "." + $PSVersionTable.PSVersion.Patch.ToString()))
 
 function PowerShellAdditionsWatermark {
 Write-Host -NoNewline "PowerShell Additions" -ForegroundColor:Blue

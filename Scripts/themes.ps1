@@ -800,10 +800,17 @@ function THEME_ARROW {
     return " ";
 }
 
-
 function THEME_LINEBOSS {
     # Available characters
-    # 
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
 
     $UserName = [System.Environment]::UserName
     $MachineName = [System.Environment]::MachineName
@@ -862,6 +869,92 @@ function THEME_LINEBOSS {
     if ($null -ne $branch) {
         Write-Host -NoNewline $Seperator -BackgroundColor Cyan -ForegroundColor Black
         Write-Host -NoNewline " $branch " -BackgroundColor Cyan -ForegroundColor Black
+        Write-Host -NoNewline $Seperator -ForegroundColor Cyan    
+    }
+    Write-Host -NoNewline "`n$" -BackgroundColor Black -ForegroundColor Yellow
+    return " "
+}
+function THEME_LINEBOSS_ICONS {
+    # Available characters
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
+    #  
+    # 
+    # 
+
+    $UserName = [System.Environment]::UserName
+    $MachineName = [System.Environment]::MachineName
+
+    $Path = $pwd.ToString()
+
+    $Seperator = ""
+    #$Seperator = ""
+
+    $PathIcon = ""
+    # If the current directory has no content, use , else use 
+    $directoryInfo = Get-ChildItem -Path "./" | Measure-Object
+    if ($directoryInfo.Count -eq 0) {
+        $PathIcon = ""
+    } elseif ($null -ne (Get-GitBranch)) {
+        $PathIcon = ""
+    } else {
+        $PathIcon = ""
+    }
+    Write-Host
+    
+    # Make path only the last 2 directories
+    $Path = $Path.split('\')
+    if($Path.Length -gt 2) {
+        $Part1 = $Path[$Path.Length -2]
+        $Part2 = $Path[$Path.Length -1]
+        # Make each part max 10 characters, if it exeeds this, `...` is appended
+        $MaxLength = 32
+        if($Part1.Length -gt $MaxLength) {
+            $Part1 = $Part1.Substring(0, $MaxLength) + "..."
+        }
+        if($Part2.Length -gt $MaxLength) {
+            $Part2 = $Part2.Substring(0, $MaxLength) + "..."
+        }
+        $Path = $Part1 + "/" + $Part2
+    } elseif ($Path.Length -gt 1) {
+        $Path = $Path[$Path.Length -1]
+    } else {
+        $Path = $Path[0]
+    }
+
+    $Path = $Path.Replace('\', '/')
+
+    # Get the current drive and prepend it to the path
+    $Drive = [System.Environment]::GetEnvironmentVariable('SystemDrive').Replace(":", "")
+
+    # Username
+    Write-Host -NoNewline $Seperator -BackgroundColor Blue -ForegroundColor Black
+    Write-Host -NoNewline " $UserName " -BackgroundColor Blue -ForegroundColor Black
+    Write-Host -NoNewline $Seperator -ForegroundColor Blue
+
+    # Machine name
+    # Write-Host -NoNewline $Seperator -BackgroundColor Blue -ForegroundColor Black
+    # Write-Host -NoNewline " $MachineName " -BackgroundColor Blue -ForegroundColor Black
+    # Write-Host -NoNewline $Seperator -ForegroundColor Blue
+
+    # Drive letter
+    Write-Host -NoNewline $Seperator -BackgroundColor Green -ForegroundColor Black
+    Write-Host -NoNewline " $Drive " -BackgroundColor Green -ForegroundColor Black
+    Write-Host -NoNewline $Seperator -ForegroundColor Green
+
+    # Path
+    Write-Host -NoNewline $Seperator -BackgroundColor Red -ForegroundColor Black
+    Write-Host -NoNewline " $PathIcon$Path " -BackgroundColor Red -ForegroundColor Black
+    Write-Host -NoNewline $Seperator -ForegroundColor Red
+
+    $branch = Get-GitBranch
+    if ($null -ne $branch) {
+        Write-Host -NoNewline $Seperator -BackgroundColor Cyan -ForegroundColor Black
+        Write-Host -NoNewline " $branch " -BackgroundColor Cyan -ForegroundColor Black
         Write-Host -NoNewline $Seperator -ForegroundColor Cyan    
     }
     Write-Host -NoNewline "`n$" -BackgroundColor Black -ForegroundColor Yellow
